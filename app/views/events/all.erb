@@ -4,6 +4,6 @@
 <h3> Here's a list of all upcoming events! </h3>
   <ol>
   <% @events.each do |event|%>
-    <li><%= event.name%></li>
+    <li><a href='/event/<%=event.id %>' ><%=event.name %></a></li>
   <%end%>
   </ol>
