@@ -3,8 +3,19 @@
 <form action="/new" method="post">
   <label for="name">Event Name:</label>
   <input type="text" name="event[name]">
+  <br>
+  <label for="genre"> Genre: </label>
+  <select name="event[genre]">
+    <% Event.create_genres_array%>
+    <% Event.all_genres.each do |genre|%>
+    <option value="#{genre}"><%=genre%></option>
+    <%end%>
+  </select>
+  <br>
   <label for="text">link:</label>
   <input type="text" name="event[link]">
-  
+  <br>
+  <br>
+  <br>
   <input type="submit" value="Create Event!">
 </form>

@@ -24,7 +24,8 @@ class Scraper
                     when 'p'
                         event_hash = {}
                         event_hash[:date] = date
-                        event_hash[:genre] = genre.downcase
+                        event_hash[:genre] = genre.gsub(/\s+/, "").downcase
+                        #event_hash[:genre] = Grenre.find_or_create_by(name: genre.downcase)
                         event_hash[:name] = el.css('strong').text
                         time = el.text.gsub(/.*?(?=Time)/im, "")
                         event_hash[:time] = time = time.slice(0..(time.index('. ETL')))
