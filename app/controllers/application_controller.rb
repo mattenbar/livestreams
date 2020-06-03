@@ -10,9 +10,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    logged_in_user_id = session[:user_id]
-    @user = User.find_by(id: logged_in_user_id)
-    erb :'home'
+    @events = Event.all
+    if logged_in
+      logged_in_user_id = session[:user_id]
+      @user = User.find_by(id: logged_in_user_id)
+      erb :'home'
+    else
+      redirect '/login'
+    end
   end
 
   helpers do

@@ -6,3 +6,4 @@ end
 
 run ApplicationController
 use SessionController
+use EventController
