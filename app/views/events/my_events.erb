@@ -1,9 +1,13 @@
 
  <a href="/">HOME</a>
-
-<h3> Here's a list of your upcoming events! </h3>
+<% if @events.empty?%>
+  <h3> You currently have no events </h3>
+  <a href="/event/new"> Create New Event </a>
+<%else%>
+  <h3> Here's a list of your upcoming events! </h3>
   <ol>
   <% @events.each do |event|%>
     <li><a href='/event/<%=event.id %>' ><%=event.name %></a></li>
-  <%end%>
+  <% end %>
   </ol>
+<% end %>
