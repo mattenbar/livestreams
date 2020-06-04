@@ -9,5 +9,6 @@
     <li> Description: <%=@event.description %> </li>
   </ol>
 
-  <a href=<%= "/event/#{@event.id}/edit" %>>Edit <%= @event.name %></a>
-
+  <% if session[:user_id] == @event.user_id %>
+    <a href=<%= "/event/#{@event.id}/edit" %>>Edit <%= @event.name %></a> 
+  <% end %>
