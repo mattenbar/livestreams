@@ -3,6 +3,14 @@
 <!-- add buttons for genres and date and your events -->
    <a href="/my-events">My Events </a> &nbsp;   <a href="/event"> All Events </a> &nbsp;  <a href="/event/new"> Create New Event </a>
   <br><br><br>
+  <h3>Feature Event: <%=@featured_event.name%></h3>
+  Date: <%=@featured_event.date%><br>
+  <%=@featured_event.time%><br>
+  Genre: <%=@featured_event.genre%> <br>
+  Link: <a href="<%=@featured_event.link%>" target="_blank" > <%=@featured_event.link%> </a>
+
+
+  <br><br><br>
 
   <a href="/logout">Logout</a>
 </div>

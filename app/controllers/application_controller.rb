@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
   get "/" do
     @events = Event.all
     if logged_in
+      featured_event
       logged_in_user_id = session[:user_id]
       @user = User.find_by(id: logged_in_user_id)
       erb :'home'
@@ -28,6 +29,10 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
+    end
+
+    def featured_event
+      @featured_event = Event.all.sample
     end
 
   end

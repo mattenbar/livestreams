@@ -11,7 +11,11 @@ class EventController < ApplicationController
   end
 
   get '/event/new' do
-    erb :'events/new'
+    if logged_in
+      erb :'events/new'
+    else
+      redirect '/login'
+    end
   end
 
   post '/event/new' do
@@ -46,18 +50,4 @@ class EventController < ApplicationController
     event.destroy
     redirect to "/event"
   end
-
-#   helpers do
-
-#     def users_events
-#       @users_events = []
-#       @users_events = Event.all.each do |event|
-#         if  session[:user_id] == event.user_id 
-#           @users_events << event
-#         end
-#       end
-#       @users_events
-#     end
-#   end
-
 end
