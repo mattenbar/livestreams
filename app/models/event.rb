@@ -12,4 +12,6 @@ class Event < ActiveRecord::Base
   def self.all_genres
     @@all_genres_array
   end
+
+  
 end

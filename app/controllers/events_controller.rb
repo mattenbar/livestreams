@@ -5,6 +5,11 @@ class EventController < ApplicationController
     erb :'events/all'
   end
 
+  get '/my-events' do
+    @events = Event.where(user_id: 3)
+    erb :'/events/my_events'
+  end
+
   get '/event/new' do
     erb :'events/new'
   end
@@ -41,4 +46,18 @@ class EventController < ApplicationController
     event.destroy
     redirect to "/event"
   end
+
+#   helpers do
+
+#     def users_events
+#       @users_events = []
+#       @users_events = Event.all.each do |event|
+#         if  session[:user_id] == event.user_id 
+#           @users_events << event
+#         end
+#       end
+#       @users_events
+#     end
+#   end
+
 end
