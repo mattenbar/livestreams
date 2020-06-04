@@ -21,4 +21,24 @@ class EventController < ApplicationController
     @event = Event.find(id)
     erb :'/events/show'
   end
+
+  #edit
+  get '/event/:id/edit' do
+    @event = Event.find_by(id: params[:id])
+    erb :'events/edit'
+  end
+
+  #update
+  put '/event/:id' do
+    event = Event.find_by(id: params[:id])
+    event.update(params[:event])
+    redirect to "/event/#{event.id}"
+  end
+
+
+  delete '/event/:id' do
+    event = Event.find_by(id: params[:id])
+    event.destroy
+    redirect to "/event"
+  end
 end
