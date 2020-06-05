@@ -10,5 +10,5 @@
   </ol>
 
   <% if session[:user_id] == @event.user_id %>
-    <a href=<%= "/event/#{@event.id}/edit" %>>Edit <%= @event.name %></a> 
+    <a href=<%= "/events/#{@event.id}/edit" %>>Edit <%= @event.name %></a> 
   <% end %>

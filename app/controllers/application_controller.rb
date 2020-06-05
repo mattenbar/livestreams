@@ -10,7 +10,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    @events = Event.all
     if logged_in
       featured_event
       logged_in_user_id = session[:user_id]

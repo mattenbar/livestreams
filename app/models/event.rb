@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :user
+  validates :date, presence: true
 
   def self.create_genres_array
     @@all_genres_array = Event.all.map do |event_obj|

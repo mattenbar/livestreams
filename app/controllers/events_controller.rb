@@ -1,16 +1,16 @@
 class EventController < ApplicationController
 
-  get '/event' do 
+  get '/events' do 
     @events = Event.all
     erb :'events/all'
   end
 
   get '/my-events' do
-    @events = Event.where(user_id: 3)
+    @events = Event.where(user_id: current_user.id)
     erb :'/events/my_events'
   end
 
-  get '/event/new' do
+  get '/events/new' do
     if logged_in
       erb :'events/new'
     else
@@ -18,36 +18,38 @@ class EventController < ApplicationController
     end
   end
 
-  post '/event/new' do
+  post '/events/new' do
     event = Event.new(params[:event])
     event.user_id = current_user.id
     event.save
-    redirect "/event/#{event.id}"
+    redirect "/events/#{event.id}"
   end
 
-  get '/event/:id' do
+  get '/events/:id' do
     id = params[:id]
     @event = Event.find(id)
     erb :'/events/show'
   end
 
   #edit
-  get '/event/:id/edit' do
+  get '/events/:id/edit' do
     @event = Event.find_by(id: params[:id])
     erb :'events/edit'
   end
 
   #update
-  put '/event/:id' do
+  put '/events/:id' do
     event = Event.find_by(id: params[:id])
     event.update(params[:event])
-    redirect to "/event/#{event.id}"
+    redirect to "/events/#{event.id}"
   end
 
 
-  delete '/event/:id' do
+  delete '/events/:id' do
     event = Event.find_by(id: params[:id])
     event.destroy
-    redirect to "/event"
+    redirect to "/events"
   end
+
+  # get '/events/by_genre/:genre'
 end

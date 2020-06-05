@@ -5,10 +5,15 @@ class SessionController < ApplicationController
   end
 
   post '/signup' do
-    user = User.create(params[:user])
-    user.save
-    session[:user_id] = user.id
-    redirect to '/'
+    user = User.new(params[:user])
+    
+    if user.save
+      session[:user_id] = user.id
+      redirect to '/'
+    else
+      @error = "This username is already in use"
+      erb :'sessions/signup'
+    end
   end
 
   get '/login' do
@@ -22,7 +27,7 @@ class SessionController < ApplicationController
 
   post '/login' do
     user = User.find_by(username: params[:username])
-    if user.authenticate(params[:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect to '/'
     else

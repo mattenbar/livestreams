@@ -1,6 +1,6 @@
 <h2>Edit an Event!</h3>
 
-<form action=<%="/event/#{@event.id}" %> method="post">
+<form action=<%="/events/#{@event.id}" %> method="post">
   <input type="hidden" name="_method" value="put">
   
   <label for="name">Event Name:</label>
@@ -31,7 +31,7 @@
   <input type="reset">
 </form>
 
-<form action=<%= "/event/#{@event.id}" %> method="post">
+<form action=<%= "/events/#{@event.id}" %> method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value=<%= "Delete #{@event.name}" %>>
 </form>
