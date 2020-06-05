@@ -1,0 +1,13 @@
+<h1><%= @user.username.capitalize%>'s LiveStreams</h1>
+<%@events = Event.where(user_id: @user.id)%>
+
+<% if @events.empty? %>
+  <%= @user.username.capitalize %> currently has no events
+<% else %>
+  <%@ordered_events = @events.sort_by {|event| event.name }%>
+  <ol>
+  <% @ordered_events.each do |event|%>
+    <li><a href='/events/<%=event.id %>' ><%=event.name %></a></li>
+  <%end%>
+  </ol>
+<% end %>
