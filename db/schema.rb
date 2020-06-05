@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200605190615) do
+ActiveRecord::Schema.define(version: 20200605201723) do
 
   create_table "events", force: :cascade do |t|
     t.string  "date"
@@ -24,9 +24,15 @@ ActiveRecord::Schema.define(version: 20200605190615) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.integer  "favorited_id"
+    t.string   "favorited_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "favorites", ["favorited_type", "favorited_id"], name: "index_favorites_on_favorited_type_and_favorited_id"
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string "username"

@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :user
+  belongs_to :favorite
+
+  
   validates :date, presence: true
 
   def self.create_genres_array
