@@ -34,6 +34,8 @@ class ApplicationController < Sinatra::Base
       @featured_event = Event.all.sample
     end
 
+    
+
   end
 
 end
