@@ -1,9 +1,8 @@
-<h1>Welcome, <%= @user.username.capitalize%> to Live Streams</h1>
+<h1>Welcome, <%= @user.username.capitalize%> to LiveStreams</h1>
 <div class="container">
-<!-- add buttons for genres and date and your events -->
-   <a href="/my-events">My Events </a> &nbsp;   <a href="/events"> All Events </a> &nbsp;  <a href="/events/new"> Create New Event </a>
-  <br><br><br>
-  <h3>Feature Event: <%=@featured_event.name%></h3>
+
+  <br>
+  <h2>Feature Event: <%=@featured_event.name%></h2>
   Date: <%=@featured_event.date%><br>
   <%=@featured_event.time%><br>
   Genre: <%=@featured_event.genre%> <br>
