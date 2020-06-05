@@ -10,3 +10,4 @@ run ApplicationController
 use SessionController
 use EventController
 use UsersController
+use FavoriteEventsController
