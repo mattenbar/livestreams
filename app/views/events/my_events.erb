@@ -10,8 +10,12 @@
   <% end %>
   </ol>
 <% end %>
+<br>
 
 <h3>Your Favorited Events</h3>
-<% fav_events = FavoriteEvent.all.map do |fav| %>
-  <%= fav.event_id %>
-<%end%>
+  <ol>
+  <% Event.find_events_from_favorites.each do |event| %>
+  <li><a href='/events/<%=event.id %>' ><%=event.name %></a></li>
+  <% end %>
+  </ol>
+  
