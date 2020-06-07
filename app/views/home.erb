@@ -6,10 +6,19 @@
   Date: <%=@featured_event.date%><br>
   <%=@featured_event.time%><br>
   Genre: <%=@featured_event.genre%> <br>
-  Link: <a href="<%=@featured_event.link%>" target="_blank" > <%=@featured_event.link%> </a>
+  Link: <a href="<%=@featured_event.link%>" target="_blank" > <%=@featured_event.link%> </a><br><br>
 
 
-  <br><br><br>
+  <% if !!(FavoriteEvent.where(event_id: @featured_event.id, user_id: current_user.id) != []) %> 
+    <form action=<%= "/favorite-event/#{@featured_event.id}" %> method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value=<%= "Unfavorite" %>>
+    </form>
+ <% else %> 
+    <form action=<%="/favorite-event/#{@featured_event.id}" %> method="post">
+      <input type="submit" value="Favorite This Event!">
+    </form>
+  <% end %> 
 
   
 </div>

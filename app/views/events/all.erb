@@ -1,7 +1,9 @@
 <h2> All upcoming events! </h2>
   <%@ordered_events = @events.sort_by {|event| event.name }%>
-  <ol>
+  <ul class="list-group">
   <% @ordered_events.each do |event|%>
-    <li><a href='/events/<%=event.id %>' ><%=event.name %></a></li>
+    <li class="list-group-item"><a href='/events/<%=event.id %>' ><%=event.name %></a></li>
   <%end%>
-  </ol>
+  </ul>
+
+  

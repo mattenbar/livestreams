@@ -15,9 +15,10 @@
     </form>
  <% else %> 
     <form action=<%="/favorite-event/#{@event.id}" %> method="post">
-      <input type="submit" value="Favorite This Event!">
+      <input type="submit" value=" Favorite This Event!  ">
     </form>
   <% end %> 
+  <br>
   
 
 
@@ -28,5 +29,5 @@
   
 
   <% if session[:user_id] == @event.user_id %>
-    <a href=<%= "/events/#{@event.id}/edit" %>>Edit <%= @event.name %></a> 
+    <a class="btn btn-primary" href=<%= "/events/#{@event.id}/edit" %> role="button">Edit <%= @event.name %></a>
   <% end %>

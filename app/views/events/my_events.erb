@@ -13,9 +13,26 @@
 <br>
 
 <h3>Your Favorited Events</h3>
+  <% @currrent_user_favorite_events = [] %>
+  <% @currrent_user_favorite_events = FavoriteEvent.favorite_events.each do |fav| %>
+    <% if fav.user_id == current_user.id %>
+      <% @currrent_user_favorite_events << Event.find_by(id: fav.event_id) %>
+    <% end %>
+  <% end %>
+  <%#binding.pry%>
   <ol>
-  <% Event.find_events_from_favorites.each do |event| %>
-  <li><a href='/events/<%=event.id %>' ><%=event.name %></a></li>
+  <% @currrent_user_favorite_events.each do |fav_event| %>
+    <% if fav_event.event_id != nil && fav_event.user_id == current_user.id%>
+      <% found_event =  Event.find_by(id: fav_event.event_id)%>
+      <% if found_event != nil %>
+        <li><a href='/events/<%=found_event.id %>' ><%=found_event.name %></a></li>
+      <% end %>
+    <% end%>
   <% end %>
   </ol>
   
+
+      
+        
+      
+
