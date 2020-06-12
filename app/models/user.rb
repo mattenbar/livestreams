@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :events
   has_many :favorites
+  #has_many :favorited_events, through: :favorites, foreign_key: "event_id"
   has_secure_password
   validates :username, uniqueness: true
 
@@ -14,3 +15,6 @@ class User < ActiveRecord::Base
  
 
 end
+
+# matt.events 
+# matt.favorited_events
